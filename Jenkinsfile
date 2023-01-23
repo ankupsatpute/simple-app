@@ -23,8 +23,13 @@ pipeline {
         stage('Git Checkout'){
             steps{
                 checkout scmGit(branches: [[name: '*/develop']], 
-                extensions: [[$class: 'PreBuildMerge', 
-                options: [mergeRemote: 'origin', 
+                extensions: [
+                [
+                    $class: 'PreBuildMerge', 
+                options: [
+                mergeRemote: 'origin', 
+                fastForwardMode: "FF",
+                mergeStrategy: "RECURSIVE_THEIRS"
                 mergeTarget: 'master']]],
                 userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']])
             }
