@@ -31,7 +31,7 @@ pipeline {
                                  [
                     $class: "PreBuildMerge",
                          options: [
-                            mergeTarget: "develop",
+                            mergeTarget: "master",
                            fastForwardMode: "FF",
                            mergeRemote: "origin",
                            mergeStrategy: "RECURSIVE_THEIRS",
