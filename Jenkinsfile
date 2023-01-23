@@ -29,7 +29,7 @@ pipeline {
            options: [mergeRemote: 'develop', 
            mergeStrategy: 'ours',
            mergeTarget: 'develop']]], 
-           userRemoteConfigs: [[name: 'feature', 
+           userRemoteConfigs: [[name: 'develop', 
            refspec: '+refs/heads/develop:refs/remotes/develop', 
            url: 'https://github.com/ankupsatpute/simple-app-final.git']])
                 }
