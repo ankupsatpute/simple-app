@@ -14,14 +14,27 @@ pipeline {
             }
         }
         
-       stage('Git CheckOut'){
+       /*stage('Git CheckOut'){
             steps{
               git branch: '$BRANCH_NAME', changelog: false, poll: false, url: 'https://github.com/ankupsatpute/simple-app-final.git'
                echo "Git Checkout Completed"            
                }
-            }
+            }*/
         
-        
+        stage('Git CheckOut'){
+            steps{
+                script{
+                    checkout scmGit(branches: 
+                          [[name: 'feature']], 
+                           extensions: 
+                              [[$class: 'PreBuildMerge', 
+                          options: 
+                              [mergeStrategy: 'RECURSIVE_THEIRS', 
+                            mergeTarget: 'develop']]], 
+                               userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']])
+                        }
+                     }
+                 }      
          
         
      stage('Unit Test'){
