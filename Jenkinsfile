@@ -34,7 +34,7 @@ pipeline {
                             fastForwardMode: "FF",
                             mergeRemote: "origin",
                             mergeStrategy: "RECURSIVE_THEIRS",
-                            userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/demo.git']]
+                            userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/demo.git'],[credentialsId:'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']]
                                   ],
                                ],
                             ],
