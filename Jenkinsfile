@@ -21,7 +21,7 @@ pipeline {
                }
             }*/
         
-        stage('GIT_Checkout') {
+        /*stage('GIT_Checkout') {
         steps {
           script{
           checkout scmGit(branches: [[name: 'feature']],
@@ -34,7 +34,14 @@ pipeline {
            url: 'https://github.com/ankupsatpute/simple-app-final.git']])
                 }
              }   
-          }
+          }*/
+        stage ('Git Checkout'){
+            steps{
+                script{
+                    checkout scmGit(branches: [[name: 'refs/heads/feature']], extensions: [[$class: 'PreBuildMerge', options: [mergeStrategy: 'RECURSIVE_THEIRS', mergeTarget: 'develop']]], userRemoteConfigs: [[name: 'feature', refspec: '+refs/heads/feature:refs/remotes/feature', url: 'https://github.com/ankupsatpute/simple-app-final.git']])
+                }
+            }
+        }
 
          
         
