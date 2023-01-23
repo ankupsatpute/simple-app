@@ -21,23 +21,25 @@ pipeline {
                }
             }*/
         
-        stage('Git CheckOut'){
-            steps{
-                script{
-                     checkout(
-                             [
-                         $class: 'GitSCM',
-                         extensions: [[
-                         $class: "PreBuildMerge",
+        stage('GIT_Checkout') {
+        steps {
+          script{
+          checkout(
+                 [
+               $class: 'GitSCM',
+                   extensions: [
+                                 [
+                    $class: "PreBuildMerge",
                          options: [
                             mergeTarget: "develop",
-                            fastForwardMode: "FF",
-                            mergeStrategy: "RECURSIVE_THEIRS",
-                            userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/demo.git']]
+                           fastForwardMode: "FF",
+                           mergeRemote: "origin",
+                           mergeStrategy: "RECURSIVE_THEIRS",
+                           userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']]
                                   ],
                                ],
                             ],
-                          ]
+                         ]
                      )
                 }
              }   
