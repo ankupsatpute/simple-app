@@ -24,23 +24,14 @@ pipeline {
         stage('GIT_Checkout') {
         steps {
           script{
-          checkout(
-                 [
-               $class: 'GitSCM',
-                   extensions: [
-                                 [
-                    $class: "PreBuildMerge",
-                         options: [
-                            mergeTarget: "master",
-                           fastForwardMode: "FF",
-                           mergeRemote: "origin",
-                           mergeStrategy: "RECURSIVE_THEIRS",
-                           userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']]
-                                  ],
-                               ],
-                            ],
-                         ]
-                     )
+          checkout scmGit(branches: [[name: '*/feature']],
+          extensions: [[$class: 'PreBuildMerge', 
+           options: [mergeRemote: 'origin', 
+           mergeStrategy: 'ours',
+           mergeTarget: 'develop']]], 
+           userRemoteConfigs: [[name: 'origin', 
+           refspec: '+refs/heads/develop:refs/remotes/origin/develop', 
+           url: 'https://github.com/ankupsatpute/simple-app-final.git']])
                 }
              }   
           }
