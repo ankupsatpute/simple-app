@@ -38,7 +38,14 @@ pipeline {
         stage ('Git Checkout'){
             steps{
                 script{
-                    checkout scmGit(branches: [[name: 'refs/heads/feature']], extensions: [[$class: 'PreBuildMerge', options: [mergeStrategy: 'RECURSIVE_THEIRS', mergeTarget: 'develop']]], userRemoteConfigs: [[name: 'feature', refspec: '+refs/heads/feature:refs/remotes/feature', url: 'https://github.com/ankupsatpute/simple-app-final.git']])
+                    checkout scmGit(branches: [[name: 'refs/heads/feature']], 
+                     extensions: [[$class: 'PreBuildMerge', 
+                     options: [mergeRemote: 'develop',
+                      mergeStrategy: 'RECURSIVE_THEIRS', 
+                      mergeTarget: 'develop']]], 
+                      userRemoteConfigs: [[name: 'feature', 
+                      refspec: '+refs/heads/feature:refs/remotes/feature', 
+                      url: 'https://github.com/ankupsatpute/simple-app-final.git']])
                 }
             }
         }
