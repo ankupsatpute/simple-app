@@ -25,7 +25,7 @@ pipeline {
             steps{
                 script{
                     checkout scmGit(branches: 
-                          [[name: '*/$BRANCH_NAME']], 
+                          [[name: 'feature']], 
                          extensions: [
                                  [
                          $class: "PreBuildMerge",
