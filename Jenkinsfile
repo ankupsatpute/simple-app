@@ -24,12 +24,12 @@ pipeline {
         stage('GIT_Checkout') {
         steps {
           script{
-          checkout scmGit(branches: [[name: '*/feature']],
+          checkout scmGit(branches: [[name: 'feature']],
           extensions: [[$class: 'PreBuildMerge', 
            options: [mergeRemote: 'develop', 
            mergeStrategy: 'ours',
            mergeTarget: 'develop']]], 
-           userRemoteConfigs: [[name: 'develop', 
+           userRemoteConfigs: [[name: 'feature', 
            refspec: '+refs/heads/develop:refs/remotes/develop', 
            url: 'https://github.com/ankupsatpute/simple-app-final.git']])
                 }
