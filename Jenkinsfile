@@ -22,7 +22,7 @@ pipeline {
             }*/
         stage('Git Checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/$BRANCH_NAME']], 
+                checkout scmGit(branches: [[name: '*/develop']], 
                 extensions: [[$class: 'PreBuildMerge', 
                 options: [mergeRemote: 'origin', 
                 mergeTarget: 'master']]],
