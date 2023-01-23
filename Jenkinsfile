@@ -24,19 +24,20 @@ pipeline {
         stage('Git CheckOut'){
             steps{
                 script{
-                    checkout scmGit(branches: 
-                          [[name: 'feature']], 
-                         extensions: [
-                                 [
+                     checkout(
+                             [
+                         $class: 'GitSCM',
+                         extensions: [[
                          $class: "PreBuildMerge",
                          options: [
                             mergeTarget: "develop",
                             fastForwardMode: "FF",
                             mergeStrategy: "RECURSIVE_THEIRS",
-                            userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/demo.git'],[credentialsId:'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']]
+                            userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/demo.git']]
                                   ],
                                ],
                             ],
+                          ]
                      )
                 }
              }   
