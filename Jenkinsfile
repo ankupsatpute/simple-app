@@ -27,7 +27,7 @@ pipeline {
           checkout scmGit(branches: [[name: 'feature']],
           extensions: [[$class: 'PreBuildMerge', 
            options: [mergeRemote: 'develop', 
-           mergeStrategy: 'subtree',
+           mergeStrategy: 'RECURSIVE_THEIRS',
            mergeTarget: 'develop']]], 
            userRemoteConfigs: [[name: 'develop', 
            refspec: '+refs/heads/feature:refs/remotes/feature', 
