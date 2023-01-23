@@ -26,10 +26,10 @@ pipeline {
           script{
           checkout scmGit(branches: [[name: '*/feature']],
           extensions: [[$class: 'PreBuildMerge', 
-           options: [mergeRemote: 'origin', 
+           options: [mergeRemote: 'develop', 
            mergeStrategy: 'ours',
            mergeTarget: 'develop']]], 
-           userRemoteConfigs: [[name: 'origin', 
+           userRemoteConfigs: [[name: 'develop', 
            refspec: '+refs/heads/develop:refs/remotes/origin/develop', 
            url: 'https://github.com/ankupsatpute/simple-app-final.git']])
                 }
