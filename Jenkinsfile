@@ -29,7 +29,7 @@ pipeline {
                 options: [
                 mergeRemote: 'origin', 
                 fastForwardMode: "FF",
-                mergeStrategy: "RECURSIVE_THEIRS"
+                mergeStrategy: "RECURSIVE_THEIRS",
                 mergeTarget: 'master']]],
                 userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']])
             }
