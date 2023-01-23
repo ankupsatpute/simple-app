@@ -26,22 +26,24 @@ pipeline {
                 script{
                     checkout scmGit(branches: 
                           [[name: '$BRANCH_NAME']], 
-                          extensions: [
-                           [
-                          $class: 'PreBuildMerge', 
-                          options: [
-                           mergeTarget: 'develop',
-                           fastForwardMode: "FF",
-                           mergeStrategy: 'RECURSIVE_THEIRS', 
-                           userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']]
-                             ],
+                         extensions: [
+                                 [
+                         $class: "PreBuildMerge",
+                         options: [
+                            mergeTarget: "develop",
+                            fastForwardMode: "FF",
+                            mergeRemote: "origin",
+                            mergeStrategy: "RECURSIVE_THEIRS",
+                            userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/demo.git']]
+                                  ],
+                               ],
                             ],
-                           ],
-                        ],
-                       )
-                        }
-                     }
-                 }      
+                         ]
+                     )
+                }
+             }   
+          }
+
          
         
      stage('Unit Test'){
