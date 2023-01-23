@@ -33,11 +33,12 @@ pipeline {
                            mergeTarget: 'develop',
                            fastForwardMode: "FF",
                            mergeStrategy: 'RECURSIVE_THEIRS', 
-                           userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']]),
+                           userRemoteConfigs: [[url: 'https://github.com/ankupsatpute/simple-app-final.git']]
                              ],
                             ],
                            ],
-                        ]                           
+                        ]  
+                       )
                         }
                      }
                  }      
