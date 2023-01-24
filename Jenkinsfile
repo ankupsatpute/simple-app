@@ -14,45 +14,14 @@ pipeline {
             }
         }
         
-       /*stage('Git CheckOut'){
+      stage('Git CheckOut'){
             steps{
               git branch: '$BRANCH_NAME', changelog: false, poll: false, url: 'https://github.com/ankupsatpute/simple-app-final.git'
                echo "Git Checkout Completed"            
                }
-            }*/
-        
-        /*stage('GIT_Checkout') {
-        steps {
-          script{
-          checkout scmGit(branches: [[name: 'feature']],
-          extensions: [[$class: 'PreBuildMerge', 
-           options: [mergeRemote: 'feature', 
-           mergeStrategy: 'RECURSIVE_THEIRS',
-           mergeTarget: 'develop']]], 
-           userRemoteConfigs: [[name: 'develop', 
-           refspec: '+refs/heads/feature:refs/remotes/feature', 
-           url: 'https://github.com/ankupsatpute/simple-app-final.git']])
-                }
-             }   
-          }*/
-        stage ('Git Checkout'){
-            steps{
-                script{
-                    checkout scmGit(branches: [[name: 'refs/heads/feature']], 
-                     extensions: [[$class: 'PreBuildMerge', 
-                     options: [mergeRemote: 'develop',
-                      mergeStrategy: 'RECURSIVE_THEIRS', 
-                      mergeTarget: 'develop']]], 
-                      userRemoteConfigs: [[name: 'develop', 
-                      refspec: '+refs/heads/feature:refs/remotes/feature', 
-                      url: 'https://github.com/ankupsatpute/simple-app-final.git']])
-                }
             }
-        }
-
-         
-        
-     stage('Unit Test'){
+       
+       stage('Unit Test'){
                 steps{
                     sh 'mvn test'
                 }
@@ -120,7 +89,6 @@ pipeline {
                   sh 'docker rm $(docker ps --filter status=exited -q)'
               }
           }
-
        }
         
         stage ('Deploy_Release'){
@@ -146,7 +114,6 @@ pipeline {
                   sh 'docker rm $(docker ps --filter status=exited -q)'
               }
           }
-
        }*/
    }
 }
